@@ -20,11 +20,11 @@ and open the template in the editor.
                 <table>
                     <tr><th>Titre</th><th>Support</th><th>Dimension</th><th>Auteur</th></tr>
                     <!--Pour chaque tableau t de la liste Tableaux transmise par le contrôleur-->
-                    <tr th:each="t: ${t.titre}">
-                        <td th:text="${t.titre}">Titre du tableau</td>
-                        <td th:text="${t.support}">Support du tableau</td>
-                        <td th:text="${t.dimension}">Dimension du tableau</td>
-                        <td th:text="${t.auteur}">Auteur du tableau</td>
+                    <tr th:each="t: ${tableau}">
+                        <td th:text="${t.titre}"></td>
+                        <td th:text="${t.support}"></td>
+                        <td th:text="${t.dimension}"></td>
+                        <td th:text="${t.auteur}"></td>
                         <td>
                             <!-- appel URL delete du controleur & paramètre id tableau a modifier-->
                             <a th:href="@{delete(id=${t.id})}" href="#">Supprimer</a>
