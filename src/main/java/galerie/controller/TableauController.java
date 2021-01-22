@@ -50,7 +50,14 @@ public class TableauController {
     @GetMapping (path= "delete")
     public String supprimeUnTableauPuisMontreLaListe (@RequestParam("id") Tableau tableau, RedirectAttributes redirectInfo){
       String message = "Le tableau '" + tableau.getTitre() + "' a bien été supprimé";
-        dao.delete(tableau);
+       try{
+           dao.delete(tableau);
+       }catch(DataIntegrityViolationException e){
+           // violation contrainte d'intégrité
+           message = "Erreur : Impossible de supprimer le tableau '"+tableau.getTitre()+"' ";
+       }
+        
+        
         
         redirectInfo.addFlashAttribute("message", message);
         return "redirect:show"; // on se redirige vers l'affichage de la liste

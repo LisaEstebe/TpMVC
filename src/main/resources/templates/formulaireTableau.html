@@ -26,10 +26,16 @@ and open the template in the editor.
 			<div class="column">
 				<label for="support">Support:</label>
 				<input type="text" th:field="*{support}" placeholder="Support du tableau"/>				
-			</div>
-                        <div class="column">
+			
 				<label for="dimension">Dimension:</label>
-				<input type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>				
+				<input type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>	
+                                
+                                <label for='auteur_id'>Auteur:</label>
+                                <select name='auteur' id='auteur' onchange="this.form.submit()">
+                                    <option th:each='a: ${artiste}' th:value='${a.id}'>[[${a.nom}]]</option>
+                                    <option value=''>Auteur inconnu</option>
+                                </select>
+                                
 			</div>
 		</form>		
 		<hr/>
