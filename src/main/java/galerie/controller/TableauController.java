@@ -68,9 +68,9 @@ public class TableauController {
         return "redirect:show"; // on se redirige vers l'affichage de la liste
     }
     
-    @PostMapping (path="add")
+    @GetMapping (path="add")
     public String montreLeFormulairePourAjouter(@ModelAttribute("tableau") Tableau tableau, Model model) {
-        model.addAttribute("artiste", artisteDao.getArtiste());
+        model.addAttribute("artiste", artisteDao.findAllArtistes());
         return "formulaireTableau";
     }
     

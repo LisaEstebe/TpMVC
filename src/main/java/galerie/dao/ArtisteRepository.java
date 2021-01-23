@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ArtisteRepository extends JpaRepository<Artiste, Integer> {
     @Query(value="select * from personne where dtype ='Artiste'", nativeQuery=true)
-    public List<Artiste> getArtiste();
+    public List<Artiste> findAllArtistes();
 }

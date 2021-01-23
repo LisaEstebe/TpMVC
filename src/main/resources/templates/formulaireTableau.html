@@ -16,30 +16,26 @@ and open the template in the editor.
 		<!--/* Au revient au contrôleur, avec la méthode POST */-->
 		<!--/* th:object définit quel est l'objet édité par ce formulaire */-->
 		<form th:object="${tableau}" method="POST" th:action="@{save}">
-			<div class="column">
 				<label for="titre">Titre:</label>
 				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
-				<input type="text" th:field="*{titre}" placeholder="Titre du tableau"/>
-                                <hr/>
-				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
-			</div>
-			<div class="column">
+				<input id="titre" type="text" th:field="*{titre}" placeholder="Titre du tableau"/>
+                                
 				<label for="support">Support:</label>
-				<input type="text" th:field="*{support}" placeholder="Support du tableau"/>				
+				<input id="support" type="text" th:field="*{support}" placeholder="Support du tableau"/>				
 			
 				<label for="dimension">Dimension:</label>
-				<input type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>	
+				<input id="dimension" type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>	
                                 
-                                <label for='auteur_id'>Auteur:</label>
-                                <select name='auteur_id' size="1" th:field="*{auteur}">
-                                    <option th:each='a: ${artiste}' th:value='${a.id}'>[[${a.nom}]]</option>
-                                    <option value='' selected="selected">Auteur inconnu</option>
+                                <label for="auteur_id">Auteur:</label>
+                                <select id="auteur_id" th:field="*{auteur}">
+                                    <option value='0' selected="selected">Auteur inconnu</option>
+                                    <option th:each='a: ${artiste}' th:value='${a.id}' th:text="${a.nom}"></option>
                                 </select>
                                 
-			</div>
+                                <input type="submit" value="Enregistrer" /> 
+                                <input type="reset" value="Réinitialiser" />
 		</form>		
 		<hr/>
 		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
-		<hr/>
 	</body>
 </html>
