@@ -73,5 +73,5 @@ public class TableauController {
         model.addAttribute("artiste", artisteDao.getArtiste());
         return "formulaireTableau";
     }
-    s
+    
 }
